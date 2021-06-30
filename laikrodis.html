@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laikrodis (18 paskaita)</title>
+</head>
+<body>
+
+    <div class="laikrodis">
+
+    </div>
+
+    <script>
+        "use strict"
+
+        setInterval(function() {
+         
+        var isvedimoElementas = document.querySelector (".laikrodis");
+        var siosDienosData= new Date ();
+
+        var vakarasRytas= "am";
+
+        console.log (siosDienosData);
+
+        var h= siosDienosData.getHours(); // 0-23
+        var m= siosDienosData.getMinutes(); // 0-59
+        var s= siosDienosData.getSeconds(); // 0-59 
+                
+        if (h == 12) {
+            vakarasRytas= "pm";
+        }
+
+        if (h == 0) {
+            h = -12; 
+        }
+
+        if (h > 12) {
+            h = h - 12; 
+            vakarasRytas= "pm";
+        }
+
+        if (h <= 9 ) {
+            h= "0" + h;
+        }
+        if (m <= 9 ) {
+            m= "0" + m;
+        }
+        if (s <= 9 ) {
+            s= "0" + s;
+        }
+        
+        isvedimoElementas.innerHTML = h + " : " + m + " : " + s + " " + vakarasRytas;
+        console.log (h);
+        console.log (m);
+        console.log (s);
+
+        }, 1000)    
+
+    </script>
+    
+</body>
+</html>

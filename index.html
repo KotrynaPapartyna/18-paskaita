@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 paskaita</title>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+        .img {
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f4a6959a9421eca9a791bfd0fcb4798aca6143f7">
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e6b09338755ae21945fb6ad44abb8da0e366f39f">
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c0b979a1ce5ac7dcee668fd3d5c9dd7530c41e17">
+        <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/242becca03d78726f8dec19bf48d0a31e3ca8fee">
+        <label for="koa">Koeficientas a</label>
+    <input placeholder="a" type="text" name="koa" id="koa"/>
+    <label for="kob">Koeficientas b</label>
+    <input placeholder="b" type="text" name="kob" id="kob"/>
+    <label for="koc">Koeficientas c</label>
+    <input placeholder="c" type="text" name="koc" id="koc"/>
+    <button class="patvirtinti">Patvirtinti</button>
+
+    <div class="rezultatas">
+
+    </div>
+
+    <script>
+        "use strict";
+
+    // surasti tiesines kvadratines lygties sprendinius. 
+    //turi buti galimybe ivesti koeficientus a, b, c
+
+        document.querySelector (".patvirtinti").addEventListener ("click", function () {
+            console.log ("mygtukas paspaustas");
+        
+        var a, b, c, d, x1, x2 ;   // d- diskriminantas
+        var isvedimoElementas; 
+        isvedimoElementas = document.querySelector (".rezultatas");
+
+        //a yra elemento koa reiksme
+        a=parseFloat (document.querySelector ("#koa").value);
+        b=parseFloat (document.querySelector ("#kob").value);
+        c=parseFloat (document.querySelector ("#koc").value);
+
+        d = ( b ** 2 ) - 4 * a * c;
+        console.log (d);
+
+        //a b c- negali buti 0 - salyga parasyta
+        //turi buti- d == 0, d <0, d>0 
+
+        if (a==0 && b==0 &&c== 0) {
+            console.log ("visi koeficientai yra lygus 0, lygtis neisprendziama");
+            isvedimoElementas.innerHTML = "visi koeficientai yra lygus 0, lygtis neisprendziama";
+        } else {
+            if (d==0) {
+                //x1= -b/2a
+                x1= -b/(2*a);
+                console.log ("x1");
+                isvedimoElementas.innerHTML = x1;
+            } else if (d>0) { 
+                x1= (-b + Math.sqrt (d) ) / 2 * a;
+                x2= (-b - Math.sqrt (d) ) / 2 * a;
+                console.log (x1);
+                console.log (x2);
+                isvedimoElementas.innerHTML = x1;
+                isvedimoElementas.innerHTML = x2;
+
+            } else if (d<0) {
+                //sprendiniu nera
+                console.log ("sprendiniu nera");
+                isvedimoElementas.innerHTML = "sprendiniu nera";
+            }
+        }
+
+        //console.log (a);
+        //console.log (b);
+        //console.log (180);
+
+        //if (a>b) {
+        //    console.log ("skaicius a yra didesnis uz b");
+        //} else if (b>a) {
+        //    console.log ("skaicius b yra didesnis uz skaiciu a");
+        //} else if ("a==b") {
+        //    console.log("skaicius yra lygus 0");
+        //} else {
+        //    console.log ("kazkuris is skaicius yra ne skaicius");
+        //}
+    });    
+
+    </script>
+    </div>
+    
+    
+
+
+</body>
+</html>
