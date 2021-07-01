@@ -27,6 +27,37 @@
         var h= siosDienosData.getHours(); // 0-23
         var m= siosDienosData.getMinutes(); // 0-59
         var s= siosDienosData.getSeconds(); // 0-59 
+        var diena = siosDienosData.getDay();
+        var laikrodzioDiena = "Pirmadienis"; 
+
+
+        switch (diena) {
+            case 0: // diena== 0- tikrina ar case'as teisingas 
+            laikrodzioDiena="sekmadienis";  
+            break; 
+            case 1:
+            laikrodzioDiena="Pirmadienis";
+            break; 
+            case 2:
+            laikrodzioDiena="antradienis";
+            break; 
+            case 3:
+            laikrodzioDiena= "treciadienis";
+            break; 
+            case 4:
+            laikrodzioDiena= "ketvirtadienis";
+            break; 
+            case 5:
+            laikrodzioDiena= "penktadienis";
+            break;  
+            case 6:
+            laikrodzioDiena= "sestadienis"; 
+            break; 
+        default: 
+        console.log ("tokios dienos nera");
+        }
+
+
                 
         if (h == 12) {
             vakarasRytas= "pm";
@@ -51,7 +82,7 @@
             s= "0" + s;
         }
         
-        isvedimoElementas.innerHTML = h + " : " + m + " : " + s + " " + vakarasRytas;
+        isvedimoElementas.innerHTML = h + " : " + m + " : " + s + " " + vakarasRytas + " "+ laikrodzioDiena;
         console.log (h);
         console.log (m);
         console.log (s);
